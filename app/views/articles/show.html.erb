@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+ 
+ <hr>
+   <p>
+  	<strong>Id:</strong>
+  	<%= @article_show.id %>
+  </p> 
+
+  <p>
+  	<strong>Title:</strong>
+  	<%= @article_show.title %>
+  </p>
+
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= @article_show.content %>
+</p>
+
+<h4>Comments:</h4>
+
+<% @article_show.comments.each do |comment| %>
+    <p>
+        <strong>Commenter:</strong>
+        <%= comment.commenter %>
+    </p>
+
+    <p>
+        <strong>Comment:</strong>
+        <%= comment.body  %>
+    </p>
+
+    <p>
+      <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete %>
+    </p>
+
+<% end %>
+
+<h5>Add a comment:</h5>
+
+<%= form_for [@article_show, @article_show.comments.build]  do |f| %>
+
+
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </p>
+
+
+
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit 'create' , class: "btn btn-primary" %>
+  </p>
+<% end %>
+
+
+
+<span class = "actions">
+  <%= link_to 'Edit', edit_article_path(@article_show)%>
+  <%= link_to 'Delete', article_path, :method => :delete %>
+  <%= link_to 'Index', articles_path %>
+</span>
+</body>
+</html>
+

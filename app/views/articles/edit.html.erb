@@ -1,0 +1,12 @@
+<html>
+<head>
+<body>
+	<%= form_for @article_edit  do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<%= f.label :content %>
+	<%= f.text_field :content %><br/>
+	<%= f.submit 'Update', class: 'btn btn-primary' %>
+	<%  end %>
+</body>
+</html>

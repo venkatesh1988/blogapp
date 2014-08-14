@@ -1,0 +1,16 @@
+<h3>All Posts</h3>
+<%= link_to "Back" , new_article_path %>
+
+<% @articles.each do |article| %>
+
+<p> <h4>
+	<strong>Name:</strong>
+	<%= link_to article.title , article %>
+</p> </h4>
+
+<p> <h5> 
+	<strong>Created At:</strong>
+	<%= article.created_at %> 
+</p> </h5>
+<% end %>
+
