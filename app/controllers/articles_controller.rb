@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController  
-
+  before_action :authenticate_user!
   def index
     @articles = Article.all
   end
@@ -11,7 +11,9 @@ class ArticlesController < ApplicationController
   def create
     @articles = Article.create articles_params
     if @articles.save
+      flash[:noticeuser] = "Article is successfully created!"
       redirect_to articles_path
+
     end
   end  
 
@@ -28,6 +30,7 @@ class ArticlesController < ApplicationController
     @article_update = Article.find params[:id]
     if @article_update.update_attributes articles_params 
         redirect_to articles_path
+        flash[:noticeuser] = "Article is successfully edited!"
     end
   end
 
@@ -35,6 +38,7 @@ class ArticlesController < ApplicationController
     @article_delete = Article.find params[:id]
     if @article_delete.destroy
       redirect_to articles_path
+      flash[:noticeuser] = "Article is successfully deleted!"
     end
 
   end
