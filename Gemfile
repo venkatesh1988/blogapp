@@ -26,9 +26,12 @@ gem 'execjs'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+<<<<<<< HEAD
 gem 'omniauth'
 
 gem 'omniauth-facebook'
+=======
+>>>>>>> c7db8d0f72239ae67c65079bcebc55d46971b51a
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

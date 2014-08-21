@@ -2,6 +2,7 @@
 Blogapp::Application.routes.draw do
 
 
+<<<<<<< HEAD
   
   devise_for :users,:controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
@@ -13,6 +14,13 @@ match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
     resources :comments
   end
 
+=======
+  devise_for :users
+  resources :articles do
+    resources :comments
+  end
+ 
+>>>>>>> c7db8d0f72239ae67c65079bcebc55d46971b51a
   root :to=>'articles#new' 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

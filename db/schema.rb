@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140821074938) do
+=======
+ActiveRecord::Schema.define(version: 20140818051816) do
+>>>>>>> c7db8d0f72239ae67c65079bcebc55d46971b51a
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -41,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140821074938) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+<<<<<<< HEAD
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
@@ -48,6 +53,11 @@ ActiveRecord::Schema.define(version: 20140821074938) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+=======
+    t.boolean  "is_blogger"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> c7db8d0f72239ae67c65079bcebc55d46971b51a
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
