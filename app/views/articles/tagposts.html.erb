@@ -1,0 +1,27 @@
+<html>
+<head>
+<body>
+ 
+ <hr>
+   <p>
+  	<strong>Id:</strong>
+  	<%= @articlelist.id %>
+  </p> 
+
+  <p>
+  	<strong>Title:</strong>
+  	<%= @article_show.title %>
+  </p>
+
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= @article_show.content %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= link_to @article_show.tag_list , @article_show %>
+</p>
+</body>
+</html>

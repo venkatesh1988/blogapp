@@ -26,14 +26,17 @@ gem 'execjs'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-
+gem 'rake'
 gem 'omniauth'
 
 gem 'omniauth-facebook'
 
+gem 'acts-as-taggable-on'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'mysql'
+gem 'mysql2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

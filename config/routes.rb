@@ -13,10 +13,11 @@ Blogapp::Application.routes.draw do
  
 
   devise_for :users,:controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  get 'tags/:tag' , to:'articles#index', as: :tag
   resources :articles do
     resources :comments
   end
- 
+   
 
   root :to=>'articles#new' 
   # The priority is based upon order of creation: first created -> highest priority.

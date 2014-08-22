@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController  
   before_action :authenticate_user!
   def index
-    @articles = Article.all
+    if params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    else
+      @articles = Article.all
+    end
   end
   
   def new
@@ -13,7 +17,6 @@ class ArticlesController < ApplicationController
     if @articles.save
       flash[:noticeuser] = "Article is successfully created!"
       redirect_to articles_path
-
     end
   end  
 
@@ -34,6 +37,8 @@ class ArticlesController < ApplicationController
     end
   end
 
+  
+
   def destroy
     @article_delete = Article.find params[:id]
     if @article_delete.destroy
@@ -45,6 +50,7 @@ class ArticlesController < ApplicationController
 
   private
    def articles_params
-      params.require(:articles).permit(:title,:content)
+     # params.require(:article).permit(:title,:content,{ tag_list: [] })
+      params.require(:article).permit(:title,:content, :tag_list)
    end
 end

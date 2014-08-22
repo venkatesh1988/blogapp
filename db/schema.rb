@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140821074938) do
-
-ActiveRecord::Schema.define(version: 20140818051816) do
-
+ActiveRecord::Schema.define(version: 20140822051443) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -32,7 +28,25 @@ ActiveRecord::Schema.define(version: 20140818051816) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -45,7 +59,6 @@ ActiveRecord::Schema.define(version: 20140818051816) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
@@ -53,14 +66,9 @@ ActiveRecord::Schema.define(version: 20140818051816) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-
-    t.boolean  "is_blogger"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <body>
@@ -18,6 +17,11 @@
 <p>
   <strong>Comment:</strong>
   <%= @article_show.content %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= raw @article_show.tag_list.map { |t| link_to  t, tag_path(t) }.join(', ')  %>
 </p>
 
 <h4>Comments:</h4>
