@@ -27,6 +27,13 @@ gem 'execjs'
 gem 'turbolinks'
 
 gem 'rake'
+
+
+
+gem 'bootstrap-sass', '~> 3.2.0'
+
+#gem 'sass-rails', '>= 3.2'
+
 gem 'omniauth'
 
 gem 'omniauth-facebook'
@@ -36,7 +43,9 @@ gem 'acts-as-taggable-on'
 gem 'jbuilder', '~> 1.2'
 
 gem 'mysql'
+
 gem 'mysql2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

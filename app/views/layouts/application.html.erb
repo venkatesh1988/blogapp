@@ -11,27 +11,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<div id="user-widget">
-  
-   <% if user_signed_in? %>
-Signed in as <%= current_user.name %>. Not you?
-<%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-<% else %>
-<%= link_to "Sign up", new_user_registration_path %> or
-<%= link_to "Sign in", new_user_session_path %>
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<p class="alert"> <%= alert %> </p>
+<p style = "color: green"><%= flash[:notice] %></p>
+
+<div id="user-widget">  
+ <% if user_signed_in? %>
+    Signed in as <%= current_user.name %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> <br>or <br>
+    <%= link_to "Sign in", new_user_session_path %> <br>or<br>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> <br>
 <% end %>
 </div>
 
-<div id = "user-nav">
-	<% if user_signed_in? %>
-	signed in as <%= current_user.email%> Not you?	
-	<%= link_to "Sign-Out", destroy_user_session_path,:method => :delete %>
-	<% end %>
-</div>
 
 
 <%= yield %>

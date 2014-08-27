@@ -24,6 +24,7 @@
   <%= raw @article_show.tag_list.map { |t| link_to  t, tag_path(t) }.join(', ')  %>
 </p>
 
+<div id = "comments">
 <h4>Comments:</h4>
 
 <% @article_show.comments.each do |comment| %>
@@ -38,22 +39,19 @@
     </p>
 
     <p>
-      <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete %>
+      <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete%>
     </p>
 
 <% end %>
+</div>
 
 <h5>Add a comment:</h5>
 
-<%= form_for [@article_show, @article_show.comments.build]  do |f| %>
-
+<%= form_for [@article_show, @article_show.comments.build] ,remote: true do |f| %>
 
   <p>
-    <%= f.label :commenter %><br>
     <%= f.text_field :commenter %>
   </p>
-
-
 
   <p>
     <%= f.label :body %><br>
@@ -61,11 +59,9 @@
   </p>
 
   <p>
-    <%= f.submit 'create' , class: "btn btn-primary" %>
+    <%= f.submit 'Add Comment' , class: "btn btn-primary" %>
   </p>
 <% end %>
-
-
 
 <span class = "actions">
   <%= link_to 'Edit', edit_article_path(@article_show)%>
